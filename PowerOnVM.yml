@@ -15,8 +15,9 @@
         username: "{{vcenter_user}}"
         validate_certs: false
   vars:
-    vcenter_ip: "100.98.13.40"
-    vcenter_password: "Dell$1234"
-    vcenter_user: "administrator@vsphere.local"
-    vmname: rhel-1
+    vcenter_ip: "vc-ip"
+    vcenter_hostname: "vc-fqdn.in"
+    vcenter_password: "My$1234"
+    vcenter_username: "administrator@vsphere.local"
+    vmname: "vm-name"
     ansible_python_interpreter: "/usr/bin/python3"

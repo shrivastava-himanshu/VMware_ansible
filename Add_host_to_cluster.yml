@@ -10,16 +10,16 @@
         password: '{{ vcenter_password }}'
         datacenter_name: '{{ datacenter_name }}'
         cluster_name: "Cluster R940"
-        esxi_hostname: "100.98.14.252"
+        esxi_hostname: "esxi-host-ip"
         esxi_username: "root"
-        esxi_password: "dell@123"
+        esxi_password: "my@123"
         state: present
 
 
   vars:
-    vcenter_ip: "100.98.14.248"
-    vcenter_hostname: "he-dhcp-100-98-14-248.helab.in"
-    vcenter_password: "Dell$1234"
+    vcenter_ip: "vc-ip"
+    vcenter_hostname: "vc-fqd-.in"
+    vcenter_password: "My$1234"
     vcenter_username: "administrator@vsphere.local"
     datacenter_name: "Himanshu DC"
     ansible_python_interpreter: "/usr/bin/python3"

@@ -28,8 +28,9 @@
       register: poweroff
       when: wait.msg is search('Timeout')
   vars:
-    vcenter_ip: "100.98.13.40"
-    vcenter_password: "Dell$1234"
-    vcenter_user: "administrator@vsphere.local"
-    vmname: rhel-1
+    vcenter_ip: "vc-ip"
+    vcenter_hostname: "vc-fqd-.in"
+    vcenter_password: "My$1234"
+    vcenter_username: "administrator@vsphere.local"
+    datacenter_name: "Himanshu DC"
     ansible_python_interpreter: "/usr/bin/python3"
