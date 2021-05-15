@@ -1,0 +1,22 @@
+---
+- name: Power On VM
+  connection: local
+  gather_facts: false
+  hosts: localhost
+  name: "VMware power on VM"
+  tasks:
+    -
+      name: ForcePowerOn
+      vmware_guest_powerstate:
+        hostname: "{{vcenter_ip}}"
+        name: "{{vmname}}"
+        password: "{{vcenter_password}}"
+        state: powered-on
+        username: "{{vcenter_user}}"
+        validate_certs: false
+  vars:
+    vcenter_ip: "100.98.13.40"
+    vcenter_password: "Dell$1234"
+    vcenter_user: "administrator@vsphere.local"
+    vmname: rhel-1
+    ansible_python_interpreter: "/usr/bin/python3"

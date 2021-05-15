@@ -1,0 +1,22 @@
+---
+- name: Playbook to enter or exit maintainence mode
+  hosts: localhost
+  tasks:
+    - name: Enter VSAN-Compliant Maintenance Mode
+      community.vmware.vmware_maintenancemode:
+        validate_certs: false
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        esxi_hostname: "100.98.14.252"
+        state: absent
+      delegate_to: localhost
+
+
+  vars:
+    vcenter_ip: "100.98.14.248"
+    vcenter_hostname: "he-dhcp-100-98-14-248.helab.in"
+    vcenter_password: "Dell$1234"
+    vcenter_username: "administrator@vsphere.local"
+    datacenter_name: "Himanshu DC"
+    ansible_python_interpreter: "/usr/bin/python3"

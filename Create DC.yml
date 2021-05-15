@@ -1,0 +1,23 @@
+---
+- name: DC playbook
+  connection: local
+  gather_facts: false
+  hosts: localhost
+  tasks:
+    - name: Create Datacenter
+      community.vmware.vmware_datacenter:
+        hostname: '{{ vcenter_hostname }}'
+        username: '{{ vcenter_username }}'
+        password: '{{ vcenter_password }}'
+        datacenter_name: '{{ datacenter_name }}'
+        state: present
+        validate_certs: no
+      delegate_to: localhost
+  vars:
+    vcenter_ip: "100.98.14.248"
+    vcenter_hostname: "he-dhcp-100-98-14-248.helab.in"
+    vcenter_password: "Dell$1234"
+    vcenter_username: "administrator@vsphere.local"
+    datacenter_name: "Himanshu DC"
+    ansible_python_interpreter: "/usr/bin/python3"
+

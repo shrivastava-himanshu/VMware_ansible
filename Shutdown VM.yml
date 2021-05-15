@@ -1,0 +1,35 @@
+---
+- name: Shutdown VM or force power off if exceeds timeout
+  connection: local
+  gather_facts: false
+  hosts: localhost
+  name: "VMware power on VM"
+  tasks:
+    - name: Shutdown guest
+      vmware_guest_powerstate:
+        hostname: "{{vcenter_ip}}"
+        name: "{{vmname}}"
+        password: "{{vcenter_password}}"
+        state: shutdown-guest
+        username: "{{vcenter_user}}"
+        state_change_timeout: 10
+        validate_certs: false
+      ignore_errors: yes
+      register: wait
+
+    - name: Force PowerOFF
+      vmware_guest_powerstate:
+        hostname: "{{vcenter_ip}}"
+        name: "{{vmname}}"
+        password: "{{vcenter_password}}"
+        username: "{{vcenter_user}}"
+        state: powered-off
+        validate_certs: false
+      register: poweroff
+      when: wait.msg is search('Timeout')
+  vars:
+    vcenter_ip: "100.98.13.40"
+    vcenter_password: "Dell$1234"
+    vcenter_user: "administrator@vsphere.local"
+    vmname: rhel-1
+    ansible_python_interpreter: "/usr/bin/python3"

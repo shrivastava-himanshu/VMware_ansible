@@ -1,0 +1,25 @@
+---
+- name: Playbook to add host to cluster
+  hosts: localhost
+  tasks:
+    - name: Add ESXi host
+      community.vmware.vmware_host:
+        validate_certs: false
+        hostname: '{{ vcenter_hostname }}'
+        username: '{{ vcenter_username }}'
+        password: '{{ vcenter_password }}'
+        datacenter_name: '{{ datacenter_name }}'
+        cluster_name: "Cluster R940"
+        esxi_hostname: "100.98.14.252"
+        esxi_username: "root"
+        esxi_password: "dell@123"
+        state: present
+
+
+  vars:
+    vcenter_ip: "100.98.14.248"
+    vcenter_hostname: "he-dhcp-100-98-14-248.helab.in"
+    vcenter_password: "Dell$1234"
+    vcenter_username: "administrator@vsphere.local"
+    datacenter_name: "Himanshu DC"
+    ansible_python_interpreter: "/usr/bin/python3"
